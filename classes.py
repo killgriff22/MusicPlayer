@@ -1,4 +1,5 @@
 from modules import *
+
 class Song:
     def __init__(self, title, artist, album, genre, track_number, year, length):
         self.title = title
