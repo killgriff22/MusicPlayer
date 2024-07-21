@@ -8,4 +8,4 @@ import json
 pygame.mixer.init()
 
 app = flask.Flask(__name__)
-source_paths = []
+source_paths = ["/media/New Volume/Music/Skye's/Backup/Heap/"]

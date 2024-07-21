@@ -5,4 +5,4 @@ def change_audio_driver():
 @app.route('/')
 @app.route('/library')
 def library():
-    return "hi"
+    return flask.render_template('index.html', songs=[source_paths[0]+os.listdir(source_paths[0])[0]])
