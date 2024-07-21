@@ -10,6 +10,33 @@ def library():
         content += f"<a href='/add/{song}'>{song}</a><br>"
     return flask.render_template("index.html",content=content)
 
+@app.route("/playback")
+def playback():
+    content = f"""<a href='/play'>Play</a><br>
+    <a href='/pause'>Pause</a><br>
+    <a href='/stop'>Stop</a><br>
+    <a href='/next'>Next</a><br>"""
+    return flask.render_template("index.html",content=content)
+
+@app.route('/play')
+def play():
+    pygame.mixer.music.unpause()
+    return "Playing <meta http-equiv='refresh' content='0;url=/playback'>"
+@app.route('/pause')
+def pause():
+    pygame.mixer.music.pause()
+    return "Paused <meta http-equiv='refresh' content='0;url=/playback'>"
+@app.route('/stop')
+def stop():
+    with open(queuefile, "w") as f:
+        f.write(str(["None"]))
+    pygame.mixer.music.stop()
+    return "Stopped <meta http-equiv='refresh' content='0;url=/playback'>"
+@app.route('/next')
+def next():
+    pygame.mixer.music.stop()
+    return "Next <meta http-equiv='refresh' content='0;url=/playback'>"
+
 @app.route('/add/<string:song>')
 def add(song):
     with open(queuefile, "r") as f:
