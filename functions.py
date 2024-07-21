@@ -42,6 +42,8 @@ def next():
 def add(song):
     with open(queuefile, "r") as f:
         queue = eval(f.read())
+    if "None" in queue:
+        queue.remove("None")
     queue.append(song)
     with open(queuefile, "w") as f:
         f.write(str(queue))
