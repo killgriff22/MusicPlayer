@@ -8,7 +8,7 @@ def library():
     content = ""
     for song in os.listdir(source_paths[0]):
         content += f"<a href='/add/{song}'>{song}</a><br>"
-    return flask.render_template("index",content=content)
+    return flask.render_template("index.html",content=content)
 
 @app.route('/add/<string:song>')
 def add(song):
