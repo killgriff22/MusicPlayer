@@ -19,7 +19,7 @@ def Audio_Daemon():
             if queue:
                 print(info("Now Playing " + queue[0]))
                 for path in source_paths:
-                    if os.path.exists(path + queue[0]) and pygame.mixer.music.get_busy() == 0:
+                    if os.path.exists(path + queue[0]):
                         pygame.mixer.music.load(path + queue.pop(0))
                         pygame.mixer.music.play()
                         break
