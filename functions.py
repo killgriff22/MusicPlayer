@@ -5,4 +5,4 @@ def change_audio_driver():
 @app.route('/')
 @app.route('/library')
 def library():
-    return flask.render_template('playback.html')
+    return "hi"
