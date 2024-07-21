@@ -12,7 +12,7 @@ def library():
 
 @app.route("/playback")
 def playback():
-    content = f"""<a href='/play'>Play</a><br>
+    content = f"""<button type="button" class="btn" href="/play">Play</button>
     <a href='/pause'>Pause</a><br>
     <a href='/stop'>Stop</a><br>
     <a href='/next'>Next</a><br>"""
