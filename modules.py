@@ -1,6 +1,6 @@
 import pygame
 import flask
-import flask_bootstrap
+from flask_bootstrap import Bootstrap
 import os
 import eyed3
 import json
@@ -12,6 +12,7 @@ import ast
 pygame.mixer.init()
 queuefile = "queue.txt"
 app = flask.Flask(__name__)
+Bootstrap(app)
 source_paths = [
     "/media/New Volume/Music/Skye's/Backup/Heap/",
     "C:/Users/kilgr/Music",
