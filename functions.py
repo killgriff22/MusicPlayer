@@ -5,7 +5,10 @@ def change_audio_driver():
 @app.route('/')
 @app.route('/library')
 def library():
-    return ".mp3'<br>".join(str(os.listdir(source_paths[0])).split(".mp3', "))
+    content = ""
+    for song in os.listdir(source_paths[0]):
+        content += f"<a href='/add/{song}'>{song}</a><br>"
+    return content
 
 @app.route('/add/<string:song>')
 def add(song):
