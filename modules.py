@@ -13,8 +13,8 @@ pygame.mixer.init()
 queuefile = "queue.txt"
 app = flask.Flask(__name__)
 source_paths = [
-    "C:/Users/kilgr/Music",
     "/media/New Volume/Music/Skye's/Backup/Heap/",
+    "C:/Users/kilgr/Music",
     "./"
 ]
 
