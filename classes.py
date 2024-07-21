@@ -24,6 +24,3 @@ class Library:
         song = Song(song.tag.title, song.tag.artist, song.tag.album, song.tag.genre, song.tag.track_num[0], song.tag.getBestDate(), song.info.time_secs)
         if song.artist in self.database['artists']:
             self.database[song.artist].append(song)
-
-
-audiofile.tag.save()
