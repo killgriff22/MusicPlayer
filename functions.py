@@ -17,7 +17,7 @@ def add(song):
     queue.append(song)
     with open(queuefile, "w") as f:
         f.write(str(queue))
-    return "Added " + song + " to queue"
+    return "Added " + song + " to queue <meta http-equiv='refresh' content='0;url=/library'>"
 
 def Audio_Daemon():
     queue = []
