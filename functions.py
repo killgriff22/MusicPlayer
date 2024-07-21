@@ -16,7 +16,7 @@ def playback():
     <a href="/play"><button type="button" class="btn btn-dark">Play</button></a><br>
     <a href="/pause"><button type="button" class="btn btn-dark">Pause</button></a><br>
     <a href="/stop"><button type="button" class="btn btn-dark">Stop</button></a><br>
-    <a href="'/next"><button type="button" class="btn btn-dark">Next</button></a><br>"""
+    <a href="/next"><button type="button" class="btn btn-dark">Next</button></a><br>"""
     return flask.render_template("index.html",content=content)
 
 @app.route('/play')
