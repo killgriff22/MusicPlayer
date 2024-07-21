@@ -7,16 +7,16 @@ def change_audio_driver():
 def library():
     content = ""
     for song in os.listdir(source_paths[0]):
-        content += f"""<button type="button" class="btn btn-link btn-dark btn-outline-light" href="/add/{song}">{song}</button><br>"""
+        content += f"""<button type="button" class="btn btn-dark" href="/add/{song}">{song}</button><br>"""
     return flask.render_template("index.html",content=content)
 
 @app.route("/playback")
 def playback():
     content = f"""
-    <button type="button" class="btn btn-link btn-dark btn-outline-light" href="/play">Play</button><br>
-    <button type="button" class="btn btn-link btn-dark btn-outline-light" href="/pause">Pause</button><br>
-    <button type="button" class="btn btn-link btn-dark btn-outline-light" href="/stop">Stop</button><br>
-    <button type="button" class="btn btn-link btn-dark btn-outline-light" href="'/next">Next</button><br>"""
+    <a href="/play"><button type="button" class="btn btn-dark">Play</button></a><br>
+    <a href="/pause"><button type="button" class="btn btn-dark">Pause</button></a><br>
+    <a href="/stop"><button type="button" class="btn btn-dark">Stop</button></a><br>
+    <a href="'/next"><button type="button" class="btn btn-dark">Next</button></a><br>"""
     return flask.render_template("index.html",content=content)
 
 @app.route('/play')
