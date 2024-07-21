@@ -8,3 +8,4 @@ import json
 pygame.mixer.init()
 
 app = flask.Flask(__name__)
+source_paths = []
