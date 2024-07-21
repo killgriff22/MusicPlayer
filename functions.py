@@ -7,15 +7,15 @@ def change_audio_driver():
 def library():
     content = ""
     for song in os.listdir(source_paths[0]):
-        content += f"<a href='/add/{song}'>{song}</a><br>"
+        content += f"""<button type="button" class="btn" href="/add/{song}">{song}</button><br>"""
     return flask.render_template("index.html",content=content)
 
 @app.route("/playback")
 def playback():
-    content = f"""<button type="button" class="btn" href="/play">Play</button>
-    <a href='/pause'>Pause</a><br>
-    <a href='/stop'>Stop</a><br>
-    <a href='/next'>Next</a><br>"""
+    content = f"""<button type="button" class="btn" href="/play">Play</button><br>
+    <button type="button" class="btn" href="/pause">Pause</button><br>
+    <button type="button" class="btn" href="/stop">Stop</button><br>
+    <button type="button" class="btn" href="'/next">Next</button><br>"""
     return flask.render_template("index.html",content=content)
 
 @app.route('/play')
