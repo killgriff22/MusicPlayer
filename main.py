@@ -8,4 +8,4 @@ atexit.register(on_shutdown)
 
 Audio_Daemon_Thread = threading.Thread(target=Audio_Daemon)
 Audio_Daemon_Thread.start()
-app.run('0.0.0.0',80,debug=True)
+app.run('0.0.0.0',80)
