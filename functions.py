@@ -28,7 +28,6 @@ def Audio_Daemon():
             if queue:
                 song = ""
                 for path in source_paths:
-                    print()
                     if os.path.exists(path + queue[0]):
                         print(info("Now Playing " + queue[0]))
                         song = path + queue.pop(0)
