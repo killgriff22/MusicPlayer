@@ -39,5 +39,3 @@ class Library:
                     self.add_song(os.path.join(root, file))
         self.save_library_to_disk()
 
-Global_Library = Library()
-Global_Library.load_library_from_disk()

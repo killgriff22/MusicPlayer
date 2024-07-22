@@ -1,4 +1,6 @@
 from classes import *
+Global_Library = Library()
+Global_Library.load_library_from_disk()
 def change_audio_driver():
     os.putenv('SDL_AUDIODRIVER', 'alsa')
     os.putenv('SDL_AUDIODEV', '/dev/audio')
