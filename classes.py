@@ -34,10 +34,7 @@ class Library:
         for root, dirs, files in os.walk(source):
             for file in files:
                 if file.endswith('.mp3'):
-                    try:
                         self.add_song(file, os.path.join(root, file))
                         sleep(0.001)
                         self.save_library_to_disk()
-                    except Exception as e:
-                        print(e)
 
