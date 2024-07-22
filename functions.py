@@ -2,6 +2,18 @@ from classes import *
 def change_audio_driver():
     os.putenv('SDL_AUDIODRIVER', 'alsa')
     os.putenv('SDL_AUDIODEV', '/dev/audio')
+
+def load_queue():
+    with open(queuefile, "r") as f:
+        try:
+            queue = eval(f.read())
+        except:
+            queue = ["None"]
+    return queue
+
+def save_queue(queue):
+    with open(queuefile, "w") as f:
+        f.write(str(queue))
 @app.route('/')
 @app.route('/library')
 def library():
@@ -21,6 +33,12 @@ def playback():
 
 @app.route('/play')
 def play():
+    if pygame.mixer.music.get_busy() == 0:
+        queue = load_queue()
+        if queue:
+            if queue[0] == "Stop":
+                queue = queue[1:]
+                save_queue(queue)
     pygame.mixer.music.unpause()
     return "Playing <meta http-equiv='refresh' content='0;url=/playback'>"
 @app.route('/pause')
@@ -40,33 +58,33 @@ def next():
 
 @app.route('/add/<string:song>')
 def add(song):
-    with open(queuefile, "r") as f:
-        queue = eval(f.read())
+    queue = load_queue()
     if "None" in queue:
         queue.remove("None")
     queue.append(song)
-    with open(queuefile, "w") as f:
-        f.write(str(queue))
+    save_queue(queue)
     return "Added " + song + " to queue <meta http-equiv='refresh' content='0;url=/library'>"
 
 def Audio_Daemon():
-    queue = []
+    print(info("Audio Daemon Started!"))
+    queue = load_queue()
     while not Shutdown_Flag.is_set():
-        with open(queuefile, "r") as f:
-            try:
-                queue = eval(f.read())
-            except:
-                queue = ["None"]
+        queue = load_queue()
         if pygame.mixer.music.get_busy() == 0 and (queue and queue[0] != "None"):
             if queue:
+                if queue[0] == "Stop":
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.load(os.path.join(wd,"silence.mp3"))
+                    pygame.mixer.music.play()
+                    pygame.mixer.music.pause()
+                    continue
                 song = ""
                 for path in source_paths:
                     if os.path.exists(path + queue[0]):
                         print(info("Now Playing " + queue[0]))
-                        song = path + queue.pop(0)
+                        song = path + queue[0]
                         break
                 if song:
                     pygame.mixer.music.load(song)
                     pygame.mixer.music.play()
-            with open(queuefile, "w") as f:
-                f.write(str(queue))
+            save_queue(queue[1:])
