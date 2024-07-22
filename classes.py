@@ -38,5 +38,5 @@ class Library:
                 if file.endswith('.mp3'):
                     self.add_song(os.path.join(root, file))
                     sleep(0.001)
-            self.save_library_to_disk()
+                    self.save_library_to_disk()
 
