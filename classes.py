@@ -1,11 +1,10 @@
 from modules import *
 
 class Song:
-    def __init__(self, title, artist, album, genre, track_number, year, length):
+    def __init__(self, title, artist, album, track_number, year, length):
         self.title = title
         self.artist = artist
         self.album = album
-        self.genre = genre
         self.track_number = track_number
         self.year = year
         self.length = length
@@ -22,11 +21,10 @@ class Library:
     def add_song(self, song: str):
         path = song[:]
         song = eyed3.load(song)
-        song = Song(song.tag.title, song.tag.artist, song.tag.album, song.tag.genre, song.tag.track_num[0], song.tag.getBestDate(), song.info.time_secs)
+        song = Song(song.tag.title, song.tag.artist, song.tag.album, song.tag.track_num[0], song.tag.getBestDate(), song.info.time_secs)
         self.database['songs'].append({
                 'title': song.title,
                 'album': song.album,
-                'genre': song.genre,
                 'track_number': song.track_number,
                 'year': song.year,
                 'length': song.length,
