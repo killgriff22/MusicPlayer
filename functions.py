@@ -22,7 +22,7 @@ def library():
     lib = Library()
     lib.load_library_from_disk()
     for song in lib.database['songs']:
-        content += f"""<a href="/add/{song}"><button type="button" class="btn btn-dark">{song}</button></a><br>"""
+        content += f"""<a href="/add/{song['path']}"><button type="button" class="btn btn-dark">{song['title']} - {song['artist']}</button></a><br>"""
     return flask.render_template("index.html",content=content)
 
 @app.route("/playback")

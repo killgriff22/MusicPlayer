@@ -18,9 +18,9 @@ class Library:
         self.database = json.load(open('database.json'))
     def save_library_to_disk(self):
         json.dump(self.database, open('database.json', 'w'))
-    def add_song(self, song: str):
+    def add_song(self, song: str, path=None):
         path = song[:]
-        song = eyed3.load(song)
+        song = eyed3.load(song if path else path)
         song = Song(song.tag.title, song.tag.artist, song.tag.album, song.tag.track_num[0], song.tag.getBestDate(), song.info.time_secs)
         self.database['songs'].append({
                 'title': song.title,
@@ -34,7 +34,10 @@ class Library:
         for root, dirs, files in os.walk(source):
             for file in files:
                 if file.endswith('.mp3'):
-                    self.add_song(os.path.join(root, file))
-                    sleep(0.001)
-                    self.save_library_to_disk()
+                    try:
+                        self.add_song(file, os.path.join(root, file))
+                        sleep(0.001)
+                        self.save_library_to_disk()
+                    except Exception as e:
+                        print(e)
 
