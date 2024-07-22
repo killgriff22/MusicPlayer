@@ -6,7 +6,7 @@ class Song:
         self.artist = artist
         self.album = album
         self.track_number = track_number
-        self.year = year
+        self.year = str(year)
         self.length = length
     def __str__(self):
         return f'{self.title} by {self.artist} on {self.album}'
