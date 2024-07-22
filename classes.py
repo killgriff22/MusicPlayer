@@ -23,5 +23,21 @@ class Library:
         path = song[:]
         song = eyed3.load(song)
         song = Song(song.tag.title, song.tag.artist, song.tag.album, song.tag.genre, song.tag.track_num[0], song.tag.getBestDate(), song.info.time_secs)
-        if song.artist in self.database['artists']:
-            self.database[song.artist].append(song)
+        self.database['songs'].append({
+                'title': song.title,
+                'album': song.album,
+                'genre': song.genre,
+                'track_number': song.track_number,
+                'year': song.year,
+                'length': song.length,
+                'path': path
+            })
+    def discover_songs_from_source(self, source):
+        for root, dirs, files in os.walk(source):
+            for file in files:
+                if file.endswith('.mp3'):
+                    self.add_song(os.path.join(root, file))
+        self.save_library_to_disk()
+
+Global_Library = Library()
+Global_Library.load_library_from_disk()

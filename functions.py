@@ -17,7 +17,9 @@ def save_queue(queue):
 @app.route('/')
 @app.route('/library')
 def library():
+    global Global_library
     content = ""
+    Global_library.load_library_from_disk()
     for song in os.listdir(source_paths[0]):
         content += f"""<a href="/add/{song}"><button type="button" class="btn btn-dark">{song}</button></a><br>"""
     return flask.render_template("index.html",content=content)

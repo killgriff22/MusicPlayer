@@ -1,22 +1,3 @@
 {
-    "artists":{
-        "Kendrick Lamar":{
-            "Albums":{
-                "DAMN":{
-                    "Songs":{
-                        "DNA":{
-                            "Length":"3:05",
-                            "Genre":"Hip-Hop",
-                            "Producer":"Mike Will Made It"
-                        },
-                        "ELEMENT":{
-                            "Length":"3:29",
-                            "Genre":"Hip-Hop",
-                            "Producer":"Sounwave"
-                        }
-                    }
-                }
-            }
-        }
-    }
+    "songs":[]
 }
