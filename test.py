@@ -24,7 +24,8 @@ while True:
         x=1
       if y >= os.get_terminal_size().lines:
         y=1
-      count = 1
+        clear() 
+     count = 1
     prev_char = char
   new_string = ""
   for count,i in enumerate(frequencies):
