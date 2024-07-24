@@ -17,7 +17,8 @@
             "type": "debugpy",
             "request": "launch",
             "program": "test.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "args": ["11", "2", "50", "out.txt"]
         }
     ]
 }
