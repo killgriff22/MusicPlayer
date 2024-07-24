@@ -22,5 +22,5 @@ while True:
   after = time.time()
   t = after-before
   percent = t/last*100//1 if t >0.0 and last > 0.0 else "N/A"
-  print(string if len(string) < os.get_terminal_size().columns else f"{t if not t > 60 else str(t//60)+'m'} (%{percent}{'+' if percent>100 else "-" if percent<100 else "="})")
+  print(string if len(string) < os.get_terminal_size().columns else f"{t if not t > 60 else str(t//60)+'m'} (%{percent}{'+' if percent>100 else '-' if percent<100 else '='})")
   last =t
