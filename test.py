@@ -10,11 +10,18 @@ while True:
   count = 0
   prev_char = string[0]
   frequencies = []
+  x=1
+  y=1
   for char in string+" ":
     if char == prev_char:
       count += 1
     else:
       frequencies.append([count,prev_char])
+      print_at(x,y,f"{count}{prev_char}")
+      x+=2
+      if x >= os.get_terminal_size().columns:
+        y+=1
+        x=1
       count = 1
     prev_char = char
   new_string = ""
@@ -24,5 +31,8 @@ while True:
   after = time.time()
   t = after-before
   percent = t/last*100//1 if t >0.0 and last > 0.0 else "N/A"
+  clear()
   print(string if len(string) < os.get_terminal_size().columns else f"{t if not t > 60 else str(t//60)+'m'} (%{percent}{'+' if percent>100 else '-' if percent<100 else '='})")
   last =t
+  print("sleeping for 1 sec")
+  sleep(1)
