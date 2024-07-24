@@ -22,7 +22,7 @@ while True:
       if x >= os.get_terminal_size().columns:
         y+=1
         x=1
-      if y >= os.get_terminal_size().rows:
+      if y >= os.get_terminal_size().lines:
         y=1
       count = 1
     prev_char = char
