@@ -37,4 +37,3 @@ class Library:
                         self.add_song(file, os.path.join(root, file))
                         sleep(0.001)
                         self.save_library_to_disk()
-
