@@ -1,15 +1,26 @@
-from functions import *
+import os
+import time
 string = "1"
+print(string)
+last=0.1
 while True:
-  count = 1
-  clear()
-  new_string=""
-  prev_chr = ""
-  for chr in string:
-    if prev_chr==chr: count+=1
+  before = time.time()
+  count = 0
+  prev_char = string[0]
+  frequencies = []
+  for char in string+" ":
+    if char == prev_char:
+      count += 1
     else:
-        new_string+=str(count)+prev_chr
-        count=1
-    prev_chr = chr
+      frequencies.append([count,prev_char])
+      count = 1
+    prev_char = char
+  new_string = ""
+  for count,i in enumerate(frequencies):
+    new_string += str(i[0])+i[1]
   string = new_string
-  print(string)
+  after = time.time()
+  t = after-before
+  percent = t/last*100//1 if t >0.0 and last > 0.0 else "N/A"
+  print(string if len(string) < os.get_terminal_size().columns else f"Length: {len(string)}, Does 4 occur? {'4' in string} Time: {t if not t > 60 else t/60} (%{percent})")
+  last = t

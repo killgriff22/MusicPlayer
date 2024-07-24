@@ -4,11 +4,19 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "Python Debugger: Current File",
+            "name": "Debug App",
             "type": "debugpy",
             "request": "launch",
             "program": "main.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Debug Test.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "test.py",
             "console": "integratedTerminal"
         }
     ]
