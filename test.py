@@ -23,7 +23,6 @@ lastchr = ""
 count=0
 area.blit(string,(0,0))
 area.draw()
-input("Press Enter to start")
 while True:
   if len(string) > space:
     string = string[:space]
