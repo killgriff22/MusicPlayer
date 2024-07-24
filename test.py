@@ -1,8 +1,10 @@
 import os
 import time
+from functions import *
 string = "1"
 print(string)
 last=0.1
+clear()
 while True:
   before = time.time()
   count = 0
